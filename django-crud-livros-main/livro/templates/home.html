@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block 'conteudo' %}
+
+<div class="container">
+  <br>
+  {% if status_categoria == '1' %}
+    <div class="alert alert-success" role="alert">
+      Categoria cadastrada com sucesso
+    </div>
+  {% endif %}
+  <div class="row">
+    {% for livro in livros %}
+      <div class="col-md">
+        <div class="card" style="width: 18rem; border-radius: 1rem; box-shadow: 0 0 10px rgba(0, 0, 0, 0.37);">
+          <div class="card-body">
+            <h3 class="card-title">{{livro.nome}}</h3>
+           
+            <div style="display: flex; gap: 10px;">
+              <p class="card-text font-weight-bold"">Autor:</p>
+              <p class="card-text">{{livro.autor}}</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <p class="card-text font-weight-bold">Categoria:</p>
+              <p class="card-text">{{livro.categoria}}</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <p class="card-text font-weight-bold">Descrição:</p>
+              <p class="card-text">{{livro.descricao}}</p>
+            </div>
+            <a href="{% url 'ver_livros' livro.id %}" class="btn btn-info">Acessar</a>
+          </div>
+        </div>
+        <br>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
